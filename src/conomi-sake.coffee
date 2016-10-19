@@ -29,7 +29,7 @@ table = {
     "群馬県":10,   "群馬":10,    "ぐんま":10,
     "埼玉県":11,   "埼玉":11,    "さいたま":11,
     "千葉県":12,   "千葉":12,    "ちば":12,
-    "東京都":13,   "東京":13,
+    "東京都":13,   "東京":13,    "とうきょう":13,
     "神奈川県":14, "神奈川":14,
     "新潟県":15,   "新潟":15,
     "富山県":16,   "富山":16,
@@ -79,7 +79,7 @@ module.exports = (robot) ->
             p = p + '&prefecture_code=' + table[keyword]
         else
             p = p + '&sake_name=' + encodeURIComponent(keyword)
-        console.log "http://http://www.sakenote.com" + p
+        console.log "http://www.sakenote.com" + p
         req = http.get { host:'www.sakenote.com', path:p }, (res) ->
             contents = ""
             res.on 'data', (chunk) ->
@@ -100,7 +100,7 @@ module.exports = (robot) ->
                         rep += "\n"
                         if value['maker_url'] != null
                             rep += "　URL: " + value['maker_url'] + "\n"
-                        msg.send rep
+                msg.send rep
 
         req.on "error", (e) ->
             msg.send "(fu) ひでぶっ!!  ... {e.message}"
